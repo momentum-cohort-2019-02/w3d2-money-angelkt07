@@ -6,7 +6,7 @@ class Currency:
     """
     Represents a currency. Does not contain any exchange rate info.
     """
-
+    #http://pythonfiddle.com/simplistic-money-class/
     def __init__(self, name, code, symbol=None, digits=2):
         """
         Parameters:
@@ -15,13 +15,19 @@ class Currency:
         - symbol - optional symbol used to designate currency
         - digits -- number of significant digits used
         """
-        pass
+        self.name = name
+        self.code = code
+        self.symbol = symbol
+        self.digits = digits
+
 
     def __str__(self):
         """
         Should return the currency code, or code with symbol in parentheses.
         """
-        pass
+        return f"{self.symbol}{self.code}"
+        
+         
 
     def __eq__(self, other):
         """
@@ -43,14 +49,15 @@ class Money:
         - amount -- quantity of currency
         - currency -- type of currency
         """
-        pass
+        self.amount = amount
+        self.currency = currency.digits
 
     def __str__(self):
         """
         Should use the currency symbol if available, else use the code.
         Use the currency digits to determine number of digits to show.
         """
-        pass
+        
 
     def __repr__(self):
         return f"<Money {str(self)}>"
