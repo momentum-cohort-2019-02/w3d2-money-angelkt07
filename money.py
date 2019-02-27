@@ -59,7 +59,7 @@ class Money:
         Should use the currency symbol if available, else use the code.
         Use the currency digits to determine number of digits to show.
         """
-    
+        # copied from Rob Taylors code, but used this example to understand how to update the string above on Currency. 
         if self.currency.symbol:
             return f"{self.currency.symbol}{self.amount:.{self.currency.digits}f}"
         else:
@@ -81,23 +81,31 @@ class Money:
         Add two money objects of the same currency. If they have different
         currencies, raise a DifferentCurrencyError.
         """
-        pass
+        if self.currency != other.currency:
+            raise DifferentCurrencyError()
+        else:
+            return Money((self.amount + other.amount),(self.currency))
+        
 
     def sub(self, other):
         """
         Subtract two money objects of the same currency. If they have different
         currencies, raise a DifferentCurrencyError.
         """
-        pass
+        if self.currency != other.currency:
+            raise DifferentCurrencyError()
+        else:
+            return Money((self.amount - other.amount), (self.currency))
+        
 
     def mul(self, multiplier):
         """
         Multiply a money object by a number to get a new money object.
         """
-        pass
+        return Money((self.amount * multiplier), (self.currency))
 
     def div(self, divisor):
         """
         Divide a money object by a number to get a new money object.
         """
-        pass
+        return Money((self.amount / divisor), (self.currency))
